@@ -62,26 +62,26 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var samplesArray=data.samples;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var sampleData=samplesArray.filter(sampleFiltered=> sampleFiltered.id===sample);
+    var sampleData=samplesArray.filter(sampleFiltered=> sampleFiltered.id==sample);
     //  5. Create a variable that holds the first sample in the array.
     var sampleInfo=sampleData[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var idOtu=sampleInfo.otu_ids;
-    var labelOtu=sampleInfo.otu_labels;
-    var sampleValue=sampleInfo.sample_values;
+    var id_Otu=sampleInfo.otu_ids;
+    var label_Otu=sampleInfo.otu_labels;
+    var sample_Value=sampleInfo.sample_values;
 
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-    var yticks = idOtu.slice(0,10).map(iD=>'OUT: ${value}').reverse();
+    var yticks = id_Otu.slice(0, 10).map( yID => `OTU: ${yID}`).reverse();
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
       y: yticks,
-      x: sampleValue.slice(0,10).reverse(),
-      text: labelOtu.slice(0,10).reverse(),
+      x: sample_Value.slice(0,10).reverse(),
+      text: label_Otu.slice(0,10).reverse(),
       type: "bar",
       orientation: "h"
 
