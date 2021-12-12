@@ -98,11 +98,11 @@ function buildCharts(sample) {
     Plotly.newPlot("bubble", bubbleData,bubbleLayout);
 
     var gaugeData = [{
-      domain: {x:[0,10], y:[0,10]},
+      domain: {x:[0,1], y:[0,1]},
       value: wash_freq,
       title: {text:" Belly Button Washing Frequency", font:{size: 24}, text: " Scrubs per Week", font:{size:20}},
       type:"indicator",
-      mode:"gauge+number",
+      mode:"gauge+number+delta",
       delta:{reference:2, increasing: { color: "Tableau Palette" } },
       gauge: {
         axis: { range: [0, 10], tickwidth: 1, tickcolor: "darkblue" },
@@ -118,16 +118,14 @@ function buildCharts(sample) {
           { range: [8, 10], color: "yellow" }
 
 
-        ],
+        ]},
         threshold: {
           line: { color: "red", width: 4 },
           thickness: 0.75,
-          value: 490
-        }
-      }
-    }];
+          value: 490}
+      }];
 
-    var gaugeLayout = { 
+     var gaugeLayout = { 
       width:500,
       height:400,
       margin: { t: 25, r: 25, l: 25, b: 25 },
