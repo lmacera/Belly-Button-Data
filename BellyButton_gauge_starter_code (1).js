@@ -3,24 +3,19 @@ function buildCharts(sample) {
   // Use d3.json to load the samples.json file 
   d3.json("samples.json").then((data) => {
     console.log(data);
+    var metadata = data.metadata;
+    // Filter the data for the object with the desired sample number
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
 
-    // Create a variable that holds the samples array. 
-
-    // Create a variable that filters the samples for the object with the desired sample number.
-
-    // 1. Create a variable that filters the metadata array for the object with the desired sample number.
-
-    // Create a variable that holds the first sample in the array.
-  
-
-    // 2. Create a variable that holds the first sample in the metadata array.
-    
-
-    // Create variables that hold the otu_ids, otu_labels, and sample_values.
-
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    var id_Otu=sampleInfo.otu_ids;
+    var label_Otu=sampleInfo.otu_labels;
+    var sample_Value=sampleInfo.sample_values;
+    var 
 
     // 3. Create a variable that holds the washing frequency.
-   
+   var wash_Frq=
     // Create the yticks for the bar chart.
 
     // Use Plotly to plot the bar data and layout.

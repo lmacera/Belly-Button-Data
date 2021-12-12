@@ -61,15 +61,20 @@ function buildCharts(sample) {
     
     // 3. Create a variable that holds the samples array. 
     var samplesArray=data.samples;
+    var metadata = data.metadata;
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var sampleData=samplesArray.filter(sampleFiltered=> sampleFiltered.id==sample);
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    
     //  5. Create a variable that holds the first sample in the array.
     var sampleInfo=sampleData[0];
+    var result = resultArray[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
     var id_Otu=sampleInfo.otu_ids;
     var label_Otu=sampleInfo.otu_labels;
     var sample_Value=sampleInfo.sample_values;
+    var wash_freq= parseInt(result.wfreq);
 
     var bubbleData = [{
       x: id_Otu,
@@ -92,6 +97,49 @@ function buildCharts(sample) {
     };
     Plotly.newPlot("bubble", bubbleData,bubbleLayout);
 
+    var gaugeData = [{
+      domain: {x:[0,10], y:[0,10]},
+      value: wash_freq,
+      title: {text:" Belly Button Washing Frequency", font:{size: 24}, text: " Scrubs per Week", font:{size:20}},
+      type:"indicator",
+      mode:"gauge+number",
+      delta:{reference:2, increasing: { color: "Tableau Palette" } },
+      gauge: {
+        axis: { range: [0, 10], tickwidth: 1, tickcolor: "darkblue" },
+        bar: { color: "darkblue" },
+        bgcolor: "white",
+        borderwidth: 2,
+        bordercolor: "gray",
+        steps: [
+          { range: [0, 2], color: "cyan" },
+          { range: [2, 4], color: "royalblue" },
+          { range: [4, 6], color: "red" },
+          { range: [6, 8], color: "green" },
+          { range: [8, 10], color: "yellow" }
+
+
+        ],
+        threshold: {
+          line: { color: "red", width: 4 },
+          thickness: 0.75,
+          value: 490
+        }
+      }
+    }];
+
+    var gaugeLayout = { 
+      width:500,
+      height:400,
+      margin: { t: 25, r: 25, l: 25, b: 25 },
+      paper_bgcolor: "lavender",
+      font: { color: "black", family: "Arial" }
+
+    };
+    Plotly.newPlot("gauge", gaugeData,gaugeLayout);
+
+
+    }
+    
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
