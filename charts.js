@@ -77,11 +77,9 @@ function buildCharts(sample) {
       text: label_Otu,
       mode: "markers",
       marker:{
-        color: id_otu,
-        colorScale: Picnic,
-        size: sample_Value,
-        sizeref: 2,
-      }
+        color: id_Otu,
+        colorScale: "Picnic",
+        size: sample_Value}
 
     }
       
