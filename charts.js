@@ -100,7 +100,7 @@ function buildCharts(sample) {
     var gaugeData = [{
       domain: {x:[0,1], y:[0,1]},
       value: wash_freq,
-      title: {text:" Belly Button Washing Frequency", font:{size: 24}, text: " Scrubs per Week", font:{size:20}},
+      title: {text:" Belly Button Washing Frequency", font:{size: 24}},
       type:"indicator",
       mode:"gauge+number+delta",
       delta:{reference:2, increasing: { color: "Tableau Palette" } },
