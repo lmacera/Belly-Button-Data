@@ -128,7 +128,7 @@ function buildCharts(sample) {
      var gaugeLayout = { 
       width:500,
       height:400,
-      margin: { t: 25, r: 25, l: 25, b: 25 },
+      margin: { t: 20, r: 20, l: 20, b: 20 },
       paper_bgcolor: "black",
       font: { color: "white", family: "Arial" }
 
