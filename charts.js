@@ -71,6 +71,29 @@ function buildCharts(sample) {
     var label_Otu=sampleInfo.otu_labels;
     var sample_Value=sampleInfo.sample_values;
 
+    var bubbleData = [{
+      x: id_Otu,
+      y: sample_Value,
+      text: label_Otu,
+      mode: "markers",
+      marker:{
+        color: id_otu,
+        colorScale: Picnic,
+        size: sample_Value,
+        sizeref: 2,
+      }
+
+    }
+      
+    ];
+    var bubbleLayout = {
+      title: "Bacteria Cultures Per Sample",
+      xaxis: {title: "OTU ID"},
+      hovermode: "closest"
+      
+    };
+    Plotly.newPlot("bubble", bubbleData,bubbleLayout);
+
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -86,6 +109,7 @@ function buildCharts(sample) {
       orientation: "h"
 
     }];
+
     // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found"
@@ -95,3 +119,4 @@ function buildCharts(sample) {
     Plotly.newPlot("bar",barData,barLayout)
   });
 }
+
